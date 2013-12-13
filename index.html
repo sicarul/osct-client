@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="osct-client">
+<head>
+  <meta charset="UTF-8">
+  <title>Open source campaign targeter</title>
+  <link ref="stylesheet" type="text/css" href="build/build.css">
+</head>
+<body>
+  <ng-view></ng-view>
+  <script src="./build/build.js"></script>
+  <script>
+  require('components-jquery');
+  require('sicarul-jqueryui');
+  angular = require('angular');
+  require('angular-route');
+  
+  // Custom modules
+  require('campaignFlow');
+  require('sicarul-angular-ui-utils');
+
+  angular.module("osct-client", [
+    'campaignFlow',
+    'ui.utils'
+    ]);
+  </script>
+</body>
+</html>
