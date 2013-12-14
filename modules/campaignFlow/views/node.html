@@ -1,4 +1,8 @@
-<div ui-jq="draggable" ui-options="{ grid: [ 15,15 ] }">
+<div ui-jq="draggable" ui-options="{ grid: [ 15,15 ], cancel: 'div.node-border' }">
+  <div class="node-border top"></div>
   <p class="nodename"><i class="icon-{{node.icon}}"></i> {{node.type}}</p>
   <p class="nodeselected">Seleccionados {{node.selected}}</p>
+  <div class="node-border bottom"></div>
+  <div class="node-border left"></div>
+  <div class="node-border right"></div>
 </div>
