@@ -4,7 +4,8 @@
     "componentizr/angular-route": "*",
     "components/jquery": "*",
     "sicarul/jqueryui": "*",
-    "sicarul/angular-ui-utils": "*"
+    "sicarul/angular-ui-utils": "*",
+    "sicarul/angular-bootstrap": "*"
   },
   "remotes": [],
   "local": [

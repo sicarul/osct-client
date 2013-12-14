@@ -1,1 +1,1 @@
-module.exports = '<h2>flow</h2>\n<p>\n  {{message}}\n  {{getFlow()}}\n</p>\n<workspace>\n</workspace>\n<node ui-jq="draggable"></node>';
+module.exports = '<h2>flow</h2>\n<p>\n  {{message}}\n</p>\n<workspace>\n</workspace>\n<node ui-jq="draggable"></node>';

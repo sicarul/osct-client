@@ -18,7 +18,8 @@
     "views/workspace.js"
   ],
   "styles": [
-    "styles/flow.css"
+    "styles/flow.css",
+    "styles/bootstrap.css"
   ],
   "images": [],
   "files": []
