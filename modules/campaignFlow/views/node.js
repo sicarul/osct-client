@@ -1,1 +1,1 @@
-module.exports = '<div ui-jq="draggable" ui-options="{ grid: [ 15,15 ] }"><i class="icon-filter"></i> Test</div>';
+module.exports = '<div ui-jq="draggable" ui-options="{ grid: [ 15,15 ] }">\n  <p class="nodename"><i class="icon-{{node.icon}}"></i> {{node.type}}</p>\n  <p class="nodeselected">Seleccionados {{node.selected}}</p>\n</div>';

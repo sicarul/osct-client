@@ -5,7 +5,8 @@
     "components/jquery": "*",
     "sicarul/jqueryui": "*",
     "sicarul/angular-ui-utils": "*",
-    "sicarul/angular-bootstrap": "*"
+    "sicarul/angular-bootstrap": "*",
+    "sicarul/ngd3": "*"
   },
   "remotes": [],
   "local": [

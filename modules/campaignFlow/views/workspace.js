@@ -1,1 +1,1 @@
-module.exports = '<node></node>';
+module.exports = '';
