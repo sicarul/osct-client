@@ -10,11 +10,7 @@ angular.module("campaignFlow").directive('node', function() {
     restrict: 'E',
     template: require('../views/node.js'),
     link: function(scope, elm, attrs) { 
-      scope.deleteThis = function($event) {
-        alert('Voila!');
-        $event.preventDefault();
-      };
-
+      console.log(elm[0].childNodes[0]);
 
     }
   };

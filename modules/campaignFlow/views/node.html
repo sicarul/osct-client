@@ -1,8 +1,25 @@
-<div ui-jq="draggable" ui-options="{ grid: [ 15,15 ], cancel: 'div.node-border' }">
-  <div class="node-border top"></div>
-  <p class="nodename"><i class="icon-{{node.icon}}"></i> {{node.type}}</p>
-  <p class="nodeselected">Seleccionados {{node.selected}}</p>
-  <div class="node-border bottom"></div>
-  <div class="node-border left"></div>
-  <div class="node-border right"></div>
+<div id='node-{{node.id}}' ui-jq="draggable" ui-options="{ grid: [ 15,15 ], cancel: 'td.node-border', containment: 'div#workspace' }" style="position: relative; left: {{node.xpos}}px; top: {{node.ypos}}px;">
+  <table>
+  <thead>
+    <th class="node-border vborder hborder"></th>
+    <th class="node-border vborder"></th>
+    <th class="node-border vborder hborder"></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="node-border hborder"></td>
+      <td class="node-content">
+        <p class="nodename"><i class="icon-{{node.icon}}"></i> {{node.type}}</p>
+        <p class="nodeselected">{{node.selected}}</p>
+      </td>
+      <td class="node-border hborder"></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <td class="node-border vborder hborder"></td>
+    <td class="node-border vborder"></td>
+    <td class="node-border vborder hborder"></td>
+  </tfoot>
+
+<div ng-repeat="connection in node.connections" class="connection"></div>
 </div>

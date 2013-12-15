@@ -1,1 +1,1 @@
-module.exports = '';
+module.exports = '<div id="workspace" class="well" ng-transclude></div>';
