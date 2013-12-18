@@ -1,4 +1,4 @@
-<div id='node-{{node.id}}' ui-jq="draggable" ui-options="{ grid: [ 15,15 ], cancel: 'td.node-border', containment: 'div#workspace' }" style="position: relative; left: {{node.xpos}}px; top: {{node.ypos}}px;">
+<div id='node-{{node.id}}' style="position: relative; left: {{node.xpos}}px; top: {{node.ypos}}px;">
   <table>
   <thead>
     <th class="node-border vborder hborder"></th>
@@ -20,6 +20,5 @@
     <td class="node-border vborder"></td>
     <td class="node-border vborder hborder"></td>
   </tfoot>
-
-<div ng-repeat="connection in node.connections" class="connection"></div>
+<div ng-repeat="connection in node.connections" class="connection" id="n-{{node.id}}-c-{{connection.id}}"></div>
 </div>

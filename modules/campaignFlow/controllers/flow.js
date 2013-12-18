@@ -3,7 +3,7 @@
  */
 angular.module('campaignFlow')
   .controller('flow',['$scope'
-  , function ($scope) {
+  , function ($scope, $interval) {
     $scope.message = 'Welcome to Flow';
 
     $scope.nodes = [
@@ -13,29 +13,22 @@ angular.module('campaignFlow')
     'type': 'Seleccion',
     'selected': 400,
     'xpos': 50,
-    'ypos': 50,
-    'connections': [2, 3]
+    'ypos': 0,
+    'connections': [{'id':2, 'xpos':30, 'ypos':70}, {'id':3, 'xpos':30, 'ypos':70}]
     },
     { 'id': 2,
     'icon': 'filter',
     'type': 'Prueba',
     'selected': 100,
     'xpos': 400,
-    'ypos': 50
+    'ypos': 0
     },
     { 'id': 3,
     'icon': 'filter',
     'type': 'Prueba2',
     'selected': 80,
-    'xpos': 400,
-    'ypos': 150
-    }
-    ];
-
-    $scope.connections = [
-    {
-      'from': 1,
-      'to': 2
+    'xpos': 600,
+    'ypos': 0
     }
     ];
 

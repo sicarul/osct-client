@@ -1,1 +1,1 @@
-module.exports = '<h2>flow</h2>\n<p>\n  {{message}}\n</p>\n<workspace>\n<node ng-repeat="node in nodes"></node>\n</workspace>';
+module.exports = '<h2>flow</h2>\n<p>\n  {{message}}\n</p>\n<workspace>\n<div ng-repeat="node in nodes" node class="nodeContainer"></div>\n</workspace>';
