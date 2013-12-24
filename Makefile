@@ -3,4 +3,4 @@ all:
 	@ng2-html2js
 	@rm -r ./build
 	@component build
-	@mv build/sicarul-angular-bootstrap build/campaignFlow
+	@cp build/sicarul-angular-bootstrap/img/* build/campaignFlow/img

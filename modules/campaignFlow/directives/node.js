@@ -15,15 +15,20 @@ angular.module("campaignFlow").directive('node', function() {
       node.draggable({
             cursor: "move",
             grid: [ 15,15 ],
-            cancel: 'td.node-border',
+            cancel: 'td.node-border, div.connection',
             containment: 'div#workspace',
             drag: function (event, ui) {
-                console.log(ui);
                 scope.node.xpos = ui.position.left;
                 scope.node.ypos = ui.position.top;
                 scope.$apply();
             }
         });
+
+      var nodeborders=node.find('.node-border');
+
+      nodeborders.click(function(){
+        console.log("hola");
+      });
 
       function renderConnections(scope, elm) {
         var xdict = {};
@@ -52,25 +57,30 @@ angular.module("campaignFlow").directive('node', function() {
             var offsetOriginY;
             var originX;
             var originY;
-            var x = conn.xpos - scope.node.xpos + HalfWidth;
-            var y = conn.ypos - scope.node.ypos + HalfHeight;
+            var centerDestX = conn.xpos - scope.node.xpos + HalfWidth;
+            var centerDestY = conn.ypos - scope.node.ypos + HalfHeight;
+            var x;
+            var y;
 
-            if (centerX-HalfWidth > x+HalfWidth){ //It's on the right
+            if (centerX-HalfWidth > centerDestX+HalfWidth){ //It's on the right
               offsetOriginX=-HalfWidth;
               offsetOriginY=0;
-            } else if (centerX+HalfWidth < x-HalfWidth){
+            } else if (centerX+HalfWidth < centerDestX-HalfWidth){ // Left
               offsetOriginX=HalfWidth;
               offsetOriginY=0;
-            } else if(centerY-HalfHeight > y+HalfHeight){
+            } else if(centerY-HalfHeight > centerDestY+HalfHeight){ // Above
               offsetOriginX=0;
               offsetOriginY=-HalfHeight;
-            }else {
+            }else { // Below
               offsetOriginX=0;
               offsetOriginY=HalfHeight;
             }
 
             originX=centerX+offsetOriginX;
             originY=centerY+offsetOriginY;
+            x=centerDestX-offsetOriginX;
+            y=centerDestY-offsetOriginY;
+
 
             var length = Math.sqrt((x - originX) * (x - originX) 
             + (y - originY) * (y - originY));
@@ -87,7 +97,8 @@ angular.module("campaignFlow").directive('node', function() {
             .css('-moz-transform', 'rotate(' + angle + 'deg)')
             .css('-o-transform', 'rotate(' + angle + 'deg)')
             .css('-ms-transform', 'rotate(' + angle + 'deg)')
-            .css('transform', 'rotate(' + angle + 'deg)');
+            .css('transform', 'rotate(' + angle + 'deg)')
+            ;
           });
 
       };
