@@ -12,8 +12,8 @@ angular.module('campaignFlow')
     'icon': 'filter',
     'type': 'Seleccion',
     'selected': 400,
-    'xpos': 50,
-    'ypos': 0,
+    'xpos': 500,
+    'ypos': 150,
     'connections': [{'id':2, 'xpos':30, 'ypos':70}, {'id':3, 'xpos':30, 'ypos':70}]
     },
     { 'id': 2,

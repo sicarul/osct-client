@@ -18,6 +18,7 @@ angular.module("campaignFlow").directive('node', function() {
             cancel: 'td.node-border',
             containment: 'div#workspace',
             drag: function (event, ui) {
+                console.log(ui);
                 scope.node.xpos = ui.position.left;
                 scope.node.ypos = ui.position.top;
                 scope.$apply();
@@ -39,19 +40,38 @@ angular.module("campaignFlow").directive('node', function() {
           });
         });
 
-
-        var originX = scope.node.xpos + 65;
-        var originY = scope.node.ypos + 40;
+        var HalfWidth=65;
+        var HalfHeight=40;
+        var centerX = HalfWidth;
+        var centerY = HalfHeight;
         var offsetX = angular.element('div#workspace').position().left;
         var offsetY = angular.element('div#workspace').position().top;
 
         angular.forEach(scope.node.connections, function(conn, key){
+            var offsetOriginX;
+            var offsetOriginY;
+            var originX;
+            var originY;
+            var x = conn.xpos - scope.node.xpos + HalfWidth;
+            var y = conn.ypos - scope.node.ypos + HalfHeight;
 
-            var x = conn.xpos + offsetX;
-            var y = conn.ypos + offsetY;
-            console.log(originY);
-            console.log(offsetY);
-            console.log(y);
+            if (centerX-HalfWidth > x+HalfWidth){ //It's on the right
+              offsetOriginX=-HalfWidth;
+              offsetOriginY=0;
+            } else if (centerX+HalfWidth < x-HalfWidth){
+              offsetOriginX=HalfWidth;
+              offsetOriginY=0;
+            } else if(centerY-HalfHeight > y+HalfHeight){
+              offsetOriginX=0;
+              offsetOriginY=-HalfHeight;
+            }else {
+              offsetOriginX=0;
+              offsetOriginY=HalfHeight;
+            }
+
+            originX=centerX+offsetOriginX;
+            originY=centerY+offsetOriginY;
+
             var length = Math.sqrt((x - originX) * (x - originX) 
             + (y - originY) * (y - originY));
 
@@ -60,6 +80,8 @@ angular.module("campaignFlow").directive('node', function() {
                 angle *= -1;
 
             angular.element('div#n-' + scope.node.id + "-c-" + conn.id)
+            .css('left', originX + "px")
+            .css('top', originY + "px")
             .css('height', length)
             .css('-webkit-transform', 'rotate(' + angle + 'deg)')
             .css('-moz-transform', 'rotate(' + angle + 'deg)')
