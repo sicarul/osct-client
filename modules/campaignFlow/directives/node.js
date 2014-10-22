@@ -15,7 +15,7 @@ angular.module("campaignFlow").directive('node', function() {
       node.draggable({
             cursor: "move",
             grid: [ 15,15 ],
-            cancel: 'td.node-border, div.connection',
+            cancel: '.node-border, div.connection',
             containment: 'div#workspace',
             drag: function (event, ui) {
                 scope.node.xpos = ui.position.left;

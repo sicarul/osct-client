@@ -32,4 +32,6 @@ angular.module('campaignFlow')
     }
     ];
 
+    $scope.newconnection = null;
+
   }]);
