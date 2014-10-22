@@ -21,6 +21,9 @@
     "styles/flow.css",
     "styles/bootstrap.css"
   ],
-  "images": ["img/connarrow.png"],
+  "images": [
+  "img/connarrow.png",
+  "img/conncreate.png"
+  ],
   "files": []
 }

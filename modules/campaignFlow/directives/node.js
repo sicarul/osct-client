@@ -10,12 +10,13 @@ angular.module("campaignFlow").directive('node', function() {
     restrict: 'A',
     template: require('../views/node.js'),  
     link: function(scope, elm, attrs) {
+      // Make it draggable, baby!
       var node = angular.element(elm.children()[0]);
 
       node.draggable({
             cursor: "move",
             grid: [ 15,15 ],
-            cancel: '.node-border, div.connection',
+            cancel: '.connCreate',
             containment: 'div#workspace',
             drag: function (event, ui) {
                 scope.node.xpos = ui.position.left;
@@ -24,12 +25,40 @@ angular.module("campaignFlow").directive('node', function() {
             }
         });
 
-      var nodeborders=node.find('.node-border');
+      // Make it possible to create new connections by dragging the handler
+      var nodeCreate=node.find('.connCreate');
 
-      nodeborders.click(function(){
-        console.log("hola");
+      nodeCreate.draggable({
+        cursor: "crosshair",
+        containment: 'div#workspace',
+        opacity: 0.7,
+        drag: function (event, ui) {
+          angular.forEach(scope.nodes, function(node, key){
+            console.log(node);
+          });
+        },
+        helper: "clone"
       });
 
+      function GetBoundingRect(r1, r2)
+      {
+          var left = Math.min(r1.x, r2.x);
+          var right = Math.max(r1.x+r1.width, r2.x+r2.width);
+          var top = Math.min(r1.y, r2.y);
+          var bottom = Math.max(r1.y+r1.height, r2.y+r2.height);
+          return {'width': right-left, 'height':bottom-top};
+      }
+
+      function CheckIfIntersect(e1, e2)
+      {
+        var r1 = {'x': e1.offsetLeft, 'y': e1.offsetTop, 'width': e1.offsetWidth , 'height': e1.offsetHeight};
+        var r2 = {'x': e2.offsetLeft, 'y': e2.offsetTop, 'width': e2.offsetWidth , 'height': e2.offsetHeight};
+        var bound = GetBoundingRect(r1,r2);
+        return (bound.width < r1.width + r2.width) &&
+               (bound.height < r1.height + r2.height);
+      }
+
+      // Connection drawing
       function renderConnections(scope, elm) {
         var xdict = {};
         var ydict = {};

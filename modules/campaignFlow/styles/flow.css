@@ -70,7 +70,7 @@ div.nodeContainer > div > table .hborder {
 }
 
 div.nodeContainer > div > table .node-border {
-  cursor:crosshair;
+
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -118,6 +118,16 @@ div#workspace {
     text-align: center;
     background:url('../img/connarrow.png') repeat;
 }
+.connCreate{
+    z-index: 0;
+    position: absolute;
+    height:24px;
+    width:24px;
+    left:115px;
+    top:28px;
+    background:url('../img/conncreate.png') repeat;
+}
+
 
 div.nodeContainer{
   height:0px;
