@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: node', function () {
+describe('Directive: diagram', function () {
 
   // load the directive's module
   beforeEach(module('osctClientApp'));
@@ -13,8 +13,8 @@ describe('Directive: node', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<node></node>');
+    element = angular.element('<diagram></diagram>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the node directive');
+    expect(element.text()).toBe('this is the diagram directive');
   }));
 });
