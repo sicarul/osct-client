@@ -7,22 +7,16 @@
  * # diagram
  */
 angular.module('osctClientApp')
-  .directive('diagram', function () {
+  .directive('diagram', function (dimensions) {
+
+    var template =
+    '<svg class="osctDiagram" width="' + dimensions.diagram.width + '" height="' + dimensions.diagram.height + '">\
+      <g node ng-repeat="($index, node) in nodes">\
+      </g>\
+    </svg>'
+
     return {
       restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-           var data = scope.nodes;
-
-           var chart = d3.select(element[0]);
-
-            chart.append("div").attr("class", "chart")
-             .selectAll('div')
-             .data(data).enter().append("div")
-             .transition().ease("elastic")
-             .style("width", function(d) { return d.pos.x + "%"; })
-             .text(function(d) { return d.name; });
-
-         
-      }
+      template: template
     };
   });

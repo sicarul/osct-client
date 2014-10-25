@@ -1,4 +1,9 @@
 <div class="jumbotron">
+  <div class='container' ng-repeat="node in nodes">
+    <p>{{node.name}}</p>
+    <p>x: {{node.pos.x}}</p>
+    <p>x: {{node.pos.y}}</p>
+  </div>
   <div class="container">
       <diagram nodes="nodes"></diagram>
   </div>

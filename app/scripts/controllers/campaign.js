@@ -17,6 +17,13 @@ angular.module('osctClientApp')
       'name': 'Prueba',
       'selected': 400,
       'pos': {'x': 10, 'y': 10}
+    },
+    {
+      'id': 1,
+      'type': 'filter',
+      'name': 'Prueba 2',
+      'selected': 400,
+      'pos': {'x': 10, 'y': 180}
     }
     ]; 
 
